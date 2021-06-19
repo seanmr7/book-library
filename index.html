@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Library</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <button id="new-book">Add a Book</button>
+  <button id="display-books">Show Library</button>
+  <form id="Add-book-form" style="display: none">
+    <div>
+      <label for="author">Author</label>
+      <input type="text" id="author">
+    </div>
+    <div>
+      <label for="title">Title</label>
+      <input type="text" id="title">
+    </div>
+    <div>
+      <label for="pageNumber">Number of Pages</label>
+      <input type="text" id="pageNumber">
+    </div>
+    <div>
+      <label for="read">Already Read</label>
+      <input type="checkbox" id="read">
+    </div>
+    <input type="submit" value="Add Book">
+  </form>
+  <div id="library">
+    <div class="book">
+      <h1>Lord of the Rings</h1>
+      <h2>By: JRR Tolkien</h2>
+      <p>Page Count: 355</p>
+      <label>Read: </label><input type="checkbox" checked>
+    </div>
+    <div class="book">
+      <h1>The Giver</h1>
+      <h2>By: Lois Lowry</h2>
+      <p>Page Count: 150</p>
+      <label>Read: </label><input type="checkbox">
+    </div>
+    <div class="book">
+      <h1>The Giver</h1>
+      <h2>By: Lois Lowry</h2>
+      <p>Page Count: 150</p>
+      <label>Read: </label><input type="checkbox">
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
