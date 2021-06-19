@@ -50,6 +50,23 @@ html {
   box-sizing: inherit;
 
 }
+#library {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 800px;
+  margin: auto;
+}
+.book {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 10px 0 0 0;
+  padding: 50px 20px;
+  background-color: rgb(245, 245, 245);
+}
+@media screen and (max-width: 600px) {
+
+}
 
 button {
   background-color: rgb(245, 245, 245);
@@ -60,19 +77,10 @@ button {
 }
 
 #Add-book-form {
-
-}
-
-#library {
-  display: none;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 800px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: rgb(245, 245, 245);
+  width: 300px;
+  padding: 50px;
   margin: auto;
 }
 
-.book {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  padding: 50px 20px;
-  background-color: rgb(245, 245, 245);
-}
