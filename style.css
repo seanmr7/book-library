@@ -54,13 +54,14 @@ html {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  
   width: 800px;
-  margin: auto;
+  margin: 50px auto;
 }
 .book {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  margin: 10px 0 0 0;
+  margin: 10px 22px 0 0;
+  width: 170px;
   padding: 50px 20px;
   background-color: rgb(245, 245, 245);
 }
@@ -76,11 +77,18 @@ button {
   font-size: 16px;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 350px;
+  margin: 35px auto;
+}
+
 #Add-book-form {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   background-color: rgb(245, 245, 245);
   width: 300px;
   padding: 50px;
-  margin: auto;
+  margin: 50px auto;
 }
 

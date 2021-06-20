@@ -1,4 +1,4 @@
-let myLibrary = [1, 2, 3 ,4];
+let myLibrary = [];
 let libraryContainer = document.getElementById("library")
 let addForm = document.getElementById("Add-book-form");
 let addBookButton = document.getElementById("new-book");
@@ -33,25 +33,21 @@ function addBookToDocument(newBook) {
   const bookContainer = document.createElement("div");
   bookContainer.className = "book";
 
+  // Create DOM elements for title, author, pageCount, label, and checkbox
   const title = document.createElement("H1");
+  title.innerText = newBook.title;
+
   const author = document.createElement("H2");
+  author.innerText = `By: ${newBook.author}`;
+
   const pageCount = document.createElement("p");
-  
+  pageCount.innerText = `Pages: ${newBook.pageNumber}`;
+
   const label = document.createElement("label");
-  const labelText = document.createTextNode("Read: ");
-  label.appendChild(labelText);
+  label.innerText = `Read: `;
   
   var readCheckbox = document.createElement("INPUT");
   readCheckbox.setAttribute("type", "checkbox");
-  
-  const bookTitle = document.createTextNode(newBook.title);
-  const bookAuthor = document.createTextNode(newBook.author);
-  const bookPageCount = document.createTextNode(newBook.pageNumber);
-  
-  title.appendChild(bookTitle);
-  author.appendChild(bookAuthor);
-  pageCount.appendChild(bookPageCount);
-  title.appendChild(bookTitle);
 
   if (newBook.read === true) {
     readCheckbox.checked = true;
