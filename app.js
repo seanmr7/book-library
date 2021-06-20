@@ -21,10 +21,8 @@ function addBookToLibray(event) {
 
   newBook = new Book(author, title, pageNumber, read);
   myLibrary.push(newBook);
-  //addForm.style.display = "none";
   addForm.reset();
   showLibrary();
-  //libraryContainer.style.display = "flex";
 }
 addForm.addEventListener("submit", addBookToLibray);
 
@@ -41,20 +39,32 @@ addBookButton.addEventListener("click", showAddBookForm);
 
 // Display library when clicking "Show Library" button
 function showLibrary() {
-  // Reset Library container
-  libraryContainer.innerHTML = '';
-
+  resetLibrary();
+  // Hide book form and display library
   if (addForm.style.display == "block") {
     addForm.style.display = "none";
   }
   if (libraryContainer.style.display == "none") {
     libraryContainer.style.display = "flex";
   } else { libraryContainer.style.display = "none" }
+}
 
-  myLibrary.forEach(function (book, index) {
+function resetLibrary() {
+  libraryContainer.innerHTML = '';
+  addBooksToDocument(myLibrary);
+}
+
+function addBooksToDocument(arr) {
+  arr.forEach(function (book, index) {
     const bookContainer = document.createElement("div");
     bookContainer.className = "book";
-    bookContainer.setAttribute("data-book-index", index)
+    bookContainer.setAttribute("data-book-index", index);
+
+    const deleteBTN = document.createElement("button");
+    deleteBTN.innerText = "Delete";
+    deleteBTN.className = "delete-btn";
+    deleteBTN.setAttribute("id", index);
+    deleteBTN.addEventListener("click", deleteBook);
      // Create DOM elements for title, author, pageCount, label, and checkbox
     const title = document.createElement("H1");
     title.innerText = book.title;
@@ -81,11 +91,20 @@ function showLibrary() {
     bookContainer.appendChild(pageCount);
     bookContainer.appendChild(label);
     bookContainer.appendChild(readCheckbox);
+    bookContainer.appendChild(deleteBTN);
     libraryContainer.appendChild(bookContainer);
   })
 }
-
 displayLibraryButton.addEventListener("click", showLibrary);
+
+function deleteBook() {
+  bookIndex = this.id
+  myLibrary.splice(bookIndex, 1);
+  resetLibrary();
+  //showLibrary();
+  
+}
+
 
 let LOTR = new Book("JRR Tolkien", "Lord of the Rings", "355", true);
 let HarryPotter = new Book("JK Rowling", "Harry Potter", "309", true);
