@@ -21,47 +21,12 @@ function addBookToLibray(event) {
 
   newBook = new Book(author, title, pageNumber, read);
   myLibrary.push(newBook);
-  addBookToDocument(newBook);
-  addForm.style.display = "none";
+  //addForm.style.display = "none";
   addForm.reset();
-  libraryContainer.style.display = "flex";
+  showLibrary();
+  //libraryContainer.style.display = "flex";
 }
 addForm.addEventListener("submit", addBookToLibray);
-
-// Add new book to HTML document
-function addBookToDocument(newBook) {
-  const bookContainer = document.createElement("div");
-  bookContainer.className = "book";
-
-  // Create DOM elements for title, author, pageCount, label, and checkbox
-  const title = document.createElement("H1");
-  title.innerText = newBook.title;
-
-  const author = document.createElement("H2");
-  author.innerText = `By: ${newBook.author}`;
-
-  const pageCount = document.createElement("p");
-  pageCount.innerText = `Pages: ${newBook.pageNumber}`;
-
-  const label = document.createElement("label");
-  label.innerText = `Read: `;
-  
-  var readCheckbox = document.createElement("INPUT");
-  readCheckbox.setAttribute("type", "checkbox");
-
-  if (newBook.read === true) {
-    readCheckbox.checked = true;
-  } else {
-    readCheckbox.checked = false;
-  }
-
-  bookContainer.appendChild(title);
-  bookContainer.appendChild(author);
-  bookContainer.appendChild(pageCount);
-  bookContainer.appendChild(label);
-  bookContainer.appendChild(readCheckbox);
-  libraryContainer.appendChild(bookContainer);
-}
 
 // Display add book form when clicking "Add a Book" button
 function showAddBookForm() {
@@ -76,12 +41,54 @@ addBookButton.addEventListener("click", showAddBookForm);
 
 // Display library when clicking "Show Library" button
 function showLibrary() {
+  // Reset Library container
+  libraryContainer.innerHTML = '';
+
   if (addForm.style.display == "block") {
     addForm.style.display = "none";
   }
   if (libraryContainer.style.display == "none") {
     libraryContainer.style.display = "flex";
   } else { libraryContainer.style.display = "none" }
+
+  myLibrary.forEach(function (book, index) {
+    const bookContainer = document.createElement("div");
+    bookContainer.className = "book";
+    bookContainer.setAttribute("data-book-index", index)
+     // Create DOM elements for title, author, pageCount, label, and checkbox
+    const title = document.createElement("H1");
+    title.innerText = book.title;
+  
+    const author = document.createElement("H2");
+    author.innerText = `By: ${book.author}`;
+  
+    const pageCount = document.createElement("p");
+    pageCount.innerText = `Pages: ${book.pageNumber}`;
+  
+    const label = document.createElement("label");
+    label.innerText = `Read: `;
+    
+    var readCheckbox = document.createElement("INPUT");
+    readCheckbox.setAttribute("type", "checkbox");
+    if (book.read === true) {
+      readCheckbox.checked = true;
+    } else {
+      readCheckbox.checked = false;
+    }
+  
+    bookContainer.appendChild(title);
+    bookContainer.appendChild(author);
+    bookContainer.appendChild(pageCount);
+    bookContainer.appendChild(label);
+    bookContainer.appendChild(readCheckbox);
+    libraryContainer.appendChild(bookContainer);
+  })
 }
 
 displayLibraryButton.addEventListener("click", showLibrary);
+
+let LOTR = new Book("JRR Tolkien", "Lord of the Rings", "355", true);
+let HarryPotter = new Book("JK Rowling", "Harry Potter", "309", true);
+let theGiver = new Book("Lois Lowry", "The Giver", "150", false);
+
+myLibrary.push(LOTR, HarryPotter, theGiver)
