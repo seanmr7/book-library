@@ -11,6 +11,13 @@ function Book(author, title, pageNumber, read) {
   this.read = read;
 }
 
+Book.prototype.readStatus = function() {
+  if (this.read == false) {
+    this.read = true;
+  } else { this.read = false; }
+  alert("Read status changed")
+}
+
 // Add new book to library array when addForm is submitted
 function addBookToLibray(event) {
   event.preventDefault();
@@ -85,6 +92,7 @@ function addBooksToDocument(arr) {
     } else {
       readCheckbox.checked = false;
     }
+    readCheckbox.addEventListener('change', changeReadBox);
   
     bookContainer.appendChild(title);
     bookContainer.appendChild(author);
@@ -101,8 +109,13 @@ function deleteBook() {
   bookIndex = this.id
   myLibrary.splice(bookIndex, 1);
   resetLibrary();
-  //showLibrary();
-  
+}
+
+function changeReadBox() {
+  book = myLibrary[this.parentElement.getAttribute("data-book-index")]
+  if (this.checked) {
+    book.readStatus();
+  } else { book.readStatus() }
 }
 
 
