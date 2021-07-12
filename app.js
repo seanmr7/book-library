@@ -5,17 +5,19 @@ let addForm = document.getElementById("Add-book-form");
 let addBookButton = document.getElementById("new-book");
 let displayLibraryButton = document.getElementById("display-books")
 
-function Book(author, title, pageNumber, read) {
-  this.author = author;
-  this.title = title;
-  this.pageNumber = pageNumber;
-  this.read = read;
-}
+class Book {
+  constructor(author, title, pageNumber, read) {
+    this.author = author;
+    this.title = title;
+    this.pageNumber = pageNumber;
+    this.read = read;
+  }
 
-Book.prototype.readStatus = function() {
-  if (this.read == false) {
-    this.read = true;
-  } else { this.read = false; }
+  readStatus() {
+    if (this.read == false) {
+      this.read = true;
+    } else { this.read = false; }
+  }
 }
 
 // Add new book to library array when addForm is submitted
